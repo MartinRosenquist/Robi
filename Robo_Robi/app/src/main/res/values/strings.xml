@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Robo_Robi</string>
+    <string name="title_home">Home</string>
+    <string name="title_support">Support</string>
+    <string name="title_Face">Face</string>
+    <string name="title_info">Info</string>
+    <string name="title_Movement">Movement</string>
+</resources>
