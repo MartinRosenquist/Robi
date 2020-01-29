@@ -1,29 +1,20 @@
-package com.example.robo_robi.ui.support;
+package com.example.robo_robi.ui.movement;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class SupportViewModel extends ViewModel {
+public class MovementViewModel extends ViewModel {
 
-    private MutableLiveData<String> mTicket;
-    private MutableLiveData<String> mBusiness;
-    private MutableLiveData<String> mInfo;
 
-    public SupportViewModel() {
-        mTicket = new MutableLiveData<>();
-        mTicket.setValue("Submit a Ticket");
+    private MutableLiveData<String> mMovement;
 
-        mBusiness = new MutableLiveData<>();
-        mBusiness.setValue("Contact for business inquiries");
+    public MovementViewModel() {
 
-        mInfo = new MutableLiveData<>();
-        mInfo.setValue("Info about Robi");
+        mMovement = new MutableLiveData<>();
+        mMovement.setValue("Move Robi with the buttons");
     }
 
-    public LiveData<String> getTicket() {
-        return mTicket;
-    }
-    public LiveData<String> getBusiness() { return mBusiness;}
-    public LiveData<String> getInfo() {return mInfo;}
+
+    public LiveData<String> getMovement() {return mMovement;}
 }

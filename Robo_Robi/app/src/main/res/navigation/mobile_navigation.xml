@@ -28,4 +28,10 @@
         android:name="com.example.robo_robi.ui.info.InfoFragment"
         android:label="@string/title_info"
         tools:layout="@layout/fragment_info" />
+
+    <fragment
+        android:id="@+id/navigation_movement"
+        android:name="com.example.robo_robi.ui.movement.MovementFragment"
+        android:label="@string/title_Movement"
+        tools:layout="@layout/fragment_movement" />
 </navigation>
