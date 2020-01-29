@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="LedMatrix.cpp">
+      <Filter>Libs\LedMatrix</Filter>
+    </ClCompile>
+    <ClCompile Include="LedControl.cpp">
+      <Filter>Libs\LedControl</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Libs">
+      <UniqueIdentifier>{6246ab2d-dea0-477f-b813-4ef2094e3b47}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libs\LedMatrix">
+      <UniqueIdentifier>{c6e62251-56d2-43fb-a88b-f7ce80c15b75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Libs\LedControl">
+      <UniqueIdentifier>{bbb99bc2-646d-4973-99c4-b07aad878376}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="LedMatrix.h">
+      <Filter>Libs\LedMatrix</Filter>
+    </ClInclude>
+    <ClInclude Include="LedControl.h">
+      <Filter>Libs\LedControl</Filter>
+    </ClInclude>
+    <ClInclude Include="Faces.h" />
+  </ItemGroup>
+</Project>

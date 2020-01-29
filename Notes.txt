@@ -1,0 +1,9 @@
+Raspberry Pi GPIO Pins
+
+Pins used for led matrix
+
+Physical => WiringPi
+11 => 0 : din
+12 => 1 : cs
+13 => 2 : clk
+
