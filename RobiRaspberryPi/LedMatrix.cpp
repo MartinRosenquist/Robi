@@ -18,7 +18,7 @@ LedMatrix::LedMatrix(int _din, int _clk, int _cs, int _amount, int _resolution)
 	}
 }
 
-void LedMatrix::ChangeFace(char _face[])
+void LedMatrix::ChangeFace(uint8_t _face[])
 {
 	for (int i = 0; i < resolution; i++)
 	{
@@ -26,5 +26,13 @@ void LedMatrix::ChangeFace(char _face[])
 		lc.setRow(1, i, _face[i + resolution]);
 		lc.setRow(2, i, _face[i + (resolution * 2)]);
 		lc.setRow(3, i, _face[i + (resolution * 3)]);
+	}
+}
+
+void LedMatrix::Clear()
+{
+	for (int i = 0; i < amount; i++)
+	{
+		lc.clearDisplay(i);
 	}
 }

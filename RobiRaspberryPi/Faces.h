@@ -1,7 +1,7 @@
 #include <cstdint>
 
 // Left Eye
-char Happyface[32] = { 0x00,
+uint8_t Happyface[32] = { 0x00,
 					   0x18,
 					   0x3C,
 					   0x7E,

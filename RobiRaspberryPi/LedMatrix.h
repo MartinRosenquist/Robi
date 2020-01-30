@@ -7,7 +7,8 @@ class LedMatrix
 {
 public:
 	LedMatrix(int _din, int _clk, int _cs, int _amount, int _resolution);
-	void ChangeFace(char _face[]);
+	void ChangeFace(uint8_t _face[]);
+	void Clear();
 private:
 	int din;
 	int clk;

@@ -4,58 +4,6 @@
   Validating architecture
   Starting remote build
   Compiling sources:
-  LedControl.cpp
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(89,40): warning : conversion to ‘uint8_t {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(89,40): warning :    spiTransfer(addr, OP_SCANLIMIT, limit);
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(89,40): warning :                                         ^
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(96,44): warning : conversion to ‘uint8_t {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(96,44): warning :    spiTransfer(addr, OP_INTENSITY, intensity);
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(96,44): warning :                                             ^
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(107,23): warning : conversion to ‘uint8_t {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(107,23): warning :    spiTransfer(addr, i + 1, status[offset + i]);
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(107,23): warning :                      ~~^~~
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(120,17): warning : conversion to ‘uint8_t {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(120,17): warning :   val = 10000000 >> column;
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(120,17): warning :         ~~~~~~~~~^~~~~~~~~
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(124,9): warning : conversion to ‘uint8_t {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(124,9): warning :    val = ~val;
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(124,9): warning :          ^~~~
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(127,24): warning : conversion to ‘uint8_t {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(127,24): warning :   spiTransfer(addr, row + 1, status[offset + row]);
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(127,24): warning :                     ~~~~^~~
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(138,24): warning : conversion to ‘uint8_t {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(138,24): warning :   spiTransfer(addr, row + 1, status[offset + row]);
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(138,24): warning :                     ~~~~^~~
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(149,15): warning : conversion to ‘uint8_t {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(149,15): warning :    val = value >> (7 - row);
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(149,15): warning :          ~~~~~~^~~~~~~~~~~~
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(169,12): warning : conversion to ‘uint8_t {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(169,12): warning :    shiftOut(SPI_MOSI, SPI_CLK, MSBFIRST, spidata[i - 1]);
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(169,12): warning :             ^~~~~~~~
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(169,22): warning : conversion to ‘uint8_t {aka unsigned char}’ from ‘int’ may alter its value [-Wconversion]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(169,22): warning :    shiftOut(SPI_MOSI, SPI_CLK, MSBFIRST, spidata[i - 1]);
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\LedControl.cpp(169,22): warning :                       ^~~~~~~
-  LedMatrix.cpp
   main.cpp
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\Faces.h(38,11): error : narrowing conversion of ‘37440’ from ‘int’ to ‘char’ inside { } [-Wnarrowing]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\Faces.h(38,11): error :   00000000 };
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\Faces.h(38,11): error :            ^
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\Faces.h(38,11): error : narrowing conversion of ‘299592’ from ‘int’ to ‘char’ inside { } [-Wnarrowing]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\Faces.h(38,11): error : narrowing conversion of ‘299592’ from ‘int’ to ‘char’ inside { } [-Wnarrowing]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\Faces.h(38,11): error : narrowing conversion of ‘37440’ from ‘int’ to ‘char’ inside { } [-Wnarrowing]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\Faces.h(38,11): error : narrowing conversion of ‘4608’ from ‘int’ to ‘char’ inside { } [-Wnarrowing]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\Faces.h(38,11): error : narrowing conversion of ‘4608’ from ‘int’ to ‘char’ inside { } [-Wnarrowing]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\Faces.h(38,11): error : narrowing conversion of ‘37440’ from ‘int’ to ‘char’ inside { } [-Wnarrowing]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\Faces.h(38,11): error : narrowing conversion of ‘299592’ from ‘int’ to ‘char’ inside { } [-Wnarrowing]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\Faces.h(38,11): error : narrowing conversion of ‘299592’ from ‘int’ to ‘char’ inside { } [-Wnarrowing]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\Faces.h(38,11): error : narrowing conversion of ‘37440’ from ‘int’ to ‘char’ inside { } [-Wnarrowing]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\Faces.h(38,11): error : narrowing conversion of ‘4608’ from ‘int’ to ‘char’ inside { } [-Wnarrowing]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\Faces.h(38,11): error : narrowing conversion of ‘4681’ from ‘int’ to ‘char’ inside { } [-Wnarrowing]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\Faces.h(38,11): error : narrowing conversion of ‘32768’ from ‘int’ to ‘char’ inside { } [-Wnarrowing]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\Faces.h(38,11): error : narrowing conversion of ‘4096’ from ‘int’ to ‘char’ inside { } [-Wnarrowing]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\Faces.h(38,11): error : narrowing conversion of ‘512’ from ‘int’ to ‘char’ inside { } [-Wnarrowing]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\Faces.h(38,11): error : narrowing conversion of ‘11111000’ from ‘int’ to ‘char’ inside { } [-Wnarrowing]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\Faces.h(38,11): error : narrowing conversion of ‘512’ from ‘int’ to ‘char’ inside { } [-Wnarrowing]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\Faces.h(38,11): error : narrowing conversion of ‘4096’ from ‘int’ to ‘char’ inside { } [-Wnarrowing]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\Faces.h(38,11): error : narrowing conversion of ‘32768’ from ‘int’ to ‘char’ inside { } [-Wnarrowing]
-C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\Faces.h(38,11): error : narrowing conversion of ‘11000000’ from ‘int’ to ‘char’ inside { } [-Wnarrowing]
+  Linking objects
+  RobiRaspberryPi.vcxproj -> C:\Users\mart994f\Documents\Reops\Robi\RobiRaspberryPi\bin\ARM\Debug\RobiRaspberryPi.out
