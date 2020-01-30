@@ -1,7 +1,9 @@
 package com.example.robo_robi.ui.home;
 
+import android.bluetooth.BluetoothAdapter;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
@@ -22,13 +25,19 @@ public class HomeFragment extends Fragment {
 
     private HomeViewModel homeViewModel;
 
+    int tries = 0;
+    int maxTries = 3;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         onResume("Home");
+
+        final MainActivity activity = new MainActivity();
+
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         final View root = inflater.inflate(R.layout.fragment_home, container, false);
-        final TextView connTextView = root.findViewById(R.id.Connection);
+        final TextView connTextView = (TextView) root.findViewById(R.id.Connection);
         connTextView.setText(homeViewModel.setConnText().getValue());
         homeViewModel.getConnText().observe(this, new Observer<String>() {
             @Override
@@ -36,7 +45,7 @@ public class HomeFragment extends Fragment {
                 connTextView.setText(s);
             }
         });
-        final TextView welcomeTextView = root.findViewById(R.id.Welcome_Message);
+        final TextView welcomeTextView = (TextView) root.findViewById(R.id.Welcome_Message);
         welcomeTextView.setText(homeViewModel.setWelcomeText().getValue());
         homeViewModel.getWelcomeText().observe(this, new Observer<String>() {
             @Override
@@ -47,13 +56,20 @@ public class HomeFragment extends Fragment {
 
         final Button btnClick;
 
-        btnClick = root.findViewById(R.id.testingButton);
+        btnClick = (Button) root.findViewById(R.id.testingButton);
 
         btnClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                updateLiveData();
+                activity.enableDisableBT();
+
+                if (activity.mBluetoothAdapter.isEnabled()){
+                    updateLiveData(true);
+                }
+                else {
+                    updateLiveData(false);
+                }
 
             }
         });
@@ -64,16 +80,13 @@ public class HomeFragment extends Fragment {
     }
 
     // updates livedata from homeViewModel
-    public void updateLiveData(){
+    private void updateLiveData(boolean trueFalse){
 
-        Boolean value =  homeViewModel
-                .getBool()
-                .getValue();
+        homeViewModel.SetBool(trueFalse);
 
-
-
-        if(value == true) {
-                homeViewModel
+        /*if(value == true) {
+            if (activity.bt_adapter.isEnabled())
+            homeViewModel
                         .SetBool(false);
         }
 
@@ -81,7 +94,7 @@ public class HomeFragment extends Fragment {
             homeViewModel
                     .SetBool(true);
 
-        }
+        }*/
 
         homeViewModel.setConnText();
         homeViewModel.setWelcomeText();
