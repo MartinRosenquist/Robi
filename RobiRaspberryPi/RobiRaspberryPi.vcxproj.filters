@@ -8,6 +8,10 @@
     <ClCompile Include="LedControl.cpp">
       <Filter>Libs\LedControl</Filter>
     </ClCompile>
+    <ClCompile Include="sdp.c" />
+    <ClCompile Include="uuid.c" />
+    <ClCompile Include="hci.c" />
+    <ClCompile Include="bluetooth.c" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Libs">
@@ -28,5 +32,23 @@
       <Filter>Libs\LedControl</Filter>
     </ClInclude>
     <ClInclude Include="Faces.h" />
+    <ClInclude Include="uuid.h" />
+    <ClInclude Include="mgmt.h" />
+    <ClInclude Include="rfcomm.h" />
+    <ClInclude Include="sco.h" />
+    <ClInclude Include="sdp.h" />
+    <ClInclude Include="sdp_lib.h" />
+    <ClInclude Include="l2cap.h" />
+    <ClInclude Include="hci.h" />
+    <ClInclude Include="hci_lib.h" />
+    <ClInclude Include="hidp.h" />
+    <ClInclude Include="cmtp.h" />
+    <ClInclude Include="a2mp.h" />
+    <ClInclude Include="amp.h" />
+    <ClInclude Include="bluetooth.h" />
+    <ClInclude Include="bnep.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bluez.pc.in" />
   </ItemGroup>
 </Project>

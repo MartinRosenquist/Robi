@@ -67,14 +67,36 @@
     </RemotePostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bluetooth.c" />
+    <ClCompile Include="hci.c" />
     <ClCompile Include="LedControl.cpp" />
     <ClCompile Include="LedMatrix.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="sdp.c" />
+    <ClCompile Include="uuid.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="a2mp.h" />
+    <ClInclude Include="amp.h" />
+    <ClInclude Include="bluetooth.h" />
+    <ClInclude Include="bnep.h" />
+    <ClInclude Include="cmtp.h" />
     <ClInclude Include="Faces.h" />
+    <ClInclude Include="hci.h" />
+    <ClInclude Include="hci_lib.h" />
+    <ClInclude Include="hidp.h" />
+    <ClInclude Include="l2cap.h" />
     <ClInclude Include="LedControl.h" />
     <ClInclude Include="LedMatrix.h" />
+    <ClInclude Include="mgmt.h" />
+    <ClInclude Include="rfcomm.h" />
+    <ClInclude Include="sco.h" />
+    <ClInclude Include="sdp.h" />
+    <ClInclude Include="sdp_lib.h" />
+    <ClInclude Include="uuid.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bluez.pc.in" />
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
