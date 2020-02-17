@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">RobiControl</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Connected">Robi Is Connected</string>
+    <string name="Unconnected">Robi Is Not Connected</string>
+    <string name="Welcome">Welcome, you can now enjoy the wonders of Robi</string>
+    <string name="ConnError">Robi has not been found, please check your phones Bluetooth connection</string>
+    <string name="Connect">Connect</string>
+</resources>

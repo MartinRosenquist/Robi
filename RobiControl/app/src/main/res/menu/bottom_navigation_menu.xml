@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Home"
+        android:id="@+id/Home_Menu"
+        android:icon="@drawable/ic_home_black_24dp"/>
+    <item android:title="Face"
+        android:id="@+id/Face_Menu"
+        android:icon="@drawable/ic_tag_faces_black_24dp"/>
+    <item android:title="Movement"
+        android:id="@+id/Movement_Menu"
+        android:icon="@drawable/ic_navigation_black_24dp"/>
+</menu>
