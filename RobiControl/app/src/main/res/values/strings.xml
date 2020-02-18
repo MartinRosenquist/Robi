@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">RobiControl</string>
+    <string name="home">Home</string>
+    <string name="face">Face</string>
+    <string name="movement">Movement</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="Connected">Robi Is Connected</string>
