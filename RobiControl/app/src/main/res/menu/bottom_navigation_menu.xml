@@ -2,13 +2,14 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Home"
+    <item android:title="@string/home"
         android:id="@+id/Home_Menu"
         android:icon="@drawable/ic_home_black_24dp"/>
-    <item android:title="Face"
+    <item android:title="@string/face"
         android:id="@+id/Face_Menu"
         android:icon="@drawable/ic_tag_faces_black_24dp"/>
-    <item android:title="Movement"
+    <item android:title="@string/movement"
         android:id="@+id/Movement_Menu"
-        android:icon="@drawable/ic_navigation_black_24dp"/>
+        android:icon="@drawable/ic_navigation_black_24dp"
+        />
 </menu>

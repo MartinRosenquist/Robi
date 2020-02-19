@@ -14,9 +14,9 @@
         android:layout_width="match_parent"
         app:menu="@menu/bottom_navigation_menu"
         android:layout_gravity="bottom"
-        android:background="@color/colorAccent"
-        app:itemTextColor="@color/white"
-        app:itemIconTint="@color/white"
+        android:background="@color/colorSecondaryDark"
+        app:itemTextColor="@color/bottom_navigation_color"
+        app:itemIconTint="@color/bottom_navigation_color"
         app:layout_constraintBottom_toBottomOf="parent"
         />
 
