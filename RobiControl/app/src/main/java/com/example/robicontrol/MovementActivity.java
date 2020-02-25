@@ -4,10 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import org.w3c.dom.Text;
 
 public class MovementActivity extends MainActivity {
     @Override
@@ -38,6 +43,47 @@ public class MovementActivity extends MainActivity {
                 }
 
                 return false;
+            }
+        });
+
+        TextView _forward = findViewById(R.id.forward);
+        TextView _stop = findViewById(R.id.stop);
+        TextView _left = findViewById(R.id.left);
+        TextView _right = findViewById(R.id.right);
+        TextView _backwards = findViewById(R.id.backwards);
+
+        _forward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MovementActivity.this,"Forward", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        _stop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MovementActivity.this,"Stop", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        _left.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MovementActivity.this,"Left", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        _right.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MovementActivity.this,"Right", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        _backwards.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(MovementActivity.this,"Backwards", Toast.LENGTH_SHORT).show();
             }
         });
     }
