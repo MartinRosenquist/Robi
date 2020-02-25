@@ -4,6 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
@@ -38,6 +41,39 @@ public class FaceActivity extends MainActivity {
                 }
 
                 return false;
+            }
+        });
+
+        TextView _happy_face = findViewById(R.id.happy_face);
+        TextView _sad_face = findViewById(R.id.sad_face);
+        TextView _angry_face = findViewById(R.id.angry_face);
+        TextView _neutral_face = findViewById(R.id.neutral_face);
+
+        _happy_face.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(FaceActivity.this,"Happy Face",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        _sad_face.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(FaceActivity.this,"Sad Face",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        _angry_face.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(FaceActivity.this,"Angry Face",Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        _neutral_face.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(FaceActivity.this,"Neutral Face",Toast.LENGTH_SHORT).show();
             }
         });
     }
