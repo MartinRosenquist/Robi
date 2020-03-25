@@ -9,6 +9,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-
+        <TextBlock x:Name="txtBlock" VerticalAlignment="Center" HorizontalAlignment="Center" Text="Device not connected" FontSize="30" />
     </Grid>
 </Page>
