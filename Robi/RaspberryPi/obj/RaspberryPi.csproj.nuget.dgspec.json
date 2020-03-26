@@ -37,10 +37,6 @@
       "frameworks": {
         "uap10.0.17134": {
           "dependencies": {
-            "Iot.Device.Bindings": {
-              "target": "Package",
-              "version": "[1.0.0, )"
-            },
             "Microsoft.NETCore.UniversalWindowsPlatform": {
               "target": "Package",
               "version": "[6.2.9, )"

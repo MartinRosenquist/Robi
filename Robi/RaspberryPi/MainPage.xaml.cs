@@ -17,12 +17,14 @@ namespace RaspberryPi
     public sealed partial class MainPage : Page
     {
         private SpiDevice ledMatrix;
-        private string[] requestedProperties = { "System.Devices.Aep.DeviceAddress", "System.Devices.Aep.IsConnected" };
-        private DeviceWatcher deviceWatcher;
+        private BleManager bleManager;
 
         public MainPage()
         {
             this.InitializeComponent();
+            bleManager = new BleManager();
+            bleManager.StartWatchingAdvertisement();
+            //InitializeMatrix();
         }
 
         /// <summary>
@@ -46,38 +48,6 @@ namespace RaspberryPi
 
             // Ask the SPI bus to open a device with the connection settings provided.
             ledMatrix = await SpiDevice.FromIdAsync(deviceInfo[0].Id, settings);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private void BleWatch()
-        {
-            deviceWatcher = DeviceInformation.CreateWatcher(BluetoothLEDevice.GetDeviceSelectorFromPairingState(false), requestedProperties, DeviceInformationKind.AssociationEndpoint);
-
-            // Register event handlers before starting the watcher.
-            // Added, Updated and Removed are required to get all nearby devices.
-            deviceWatcher.Added += DeviceWatcher_Added;
-            deviceWatcher.Updated += DeviceWatcher_Updated;
-            deviceWatcher.Removed += DeviceWatcher_Removed;
-
-            // Start the watcher
-            deviceWatcher.Start();
-        }
-
-        private void DeviceWatcher_Removed(DeviceWatcher sender, DeviceInformationUpdate args)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void DeviceWatcher_Updated(DeviceWatcher sender, DeviceInformationUpdate args)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void DeviceWatcher_Added(DeviceWatcher sender, DeviceInformation args)
-        {
-            throw new NotImplementedException();
         }
     }
 }
