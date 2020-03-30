@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.ObjectModel;
-using Windows.Devices.Bluetooth;
-using Windows.Devices.Bluetooth.Rfcomm;
+using System.Diagnostics;
 using Windows.Devices.Enumeration;
 using Windows.Devices.Spi;
-using Windows.Networking.Sockets;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
@@ -17,19 +15,15 @@ namespace RaspberryPi
     public sealed partial class MainPage : Page
     {
         private SpiDevice ledMatrix;
-        private BleManager bleManager;
 
         public MainPage()
         {
             this.InitializeComponent();
-            bleManager = new BleManager();
-            bleManager.StartWatchingAdvertisement();
+            BluetoothController bluetooth = new BluetoothController();
+            bluetooth.InitializeRfcommServer();
             //InitializeMatrix();
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
         private async void InitializeMatrix()
         {
             // Get a device selector query that will select buses with SPI0

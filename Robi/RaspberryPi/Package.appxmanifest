@@ -14,7 +14,7 @@
   <mp:PhoneIdentity PhoneProductId="b53a6015-e0f1-404b-bad2-a6804167a1a7" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>RaspberryPi</DisplayName>
+    <DisplayName>Robi</DisplayName>
     <PublisherDisplayName>mrqui</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -30,12 +30,12 @@
   <Applications>
     <Application Id="App"
       Executable="$targetnametoken$.exe"
-      EntryPoint="RaspberryPi.App">
+      EntryPoint="Robi.App">
       <uap:VisualElements
-        DisplayName="RaspberryPi"
+        DisplayName="Robi"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="RaspberryPi"
+        Description="Robi"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
@@ -44,7 +44,7 @@
   </Applications>
 
   <Capabilities>
-    <Capability Name="internetClient" />
     <DeviceCapability Name="bluetooth"/>
+    <DeviceCapability Name="webcam"/>
   </Capabilities>
 </Package>
