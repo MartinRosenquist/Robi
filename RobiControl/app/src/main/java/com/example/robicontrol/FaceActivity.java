@@ -1,5 +1,6 @@
 package com.example.robicontrol;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,7 +13,12 @@ import androidx.annotation.NonNull;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.security.AccessControlException;
+
 public class FaceActivity extends MainActivity {
+    Activity _FaceActiviy = FaceActivity.this;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,28 +58,32 @@ public class FaceActivity extends MainActivity {
         _happy_face.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(FaceActivity.this,"Happy Face",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(FaceActivity.this,"Happy Face",Toast.LENGTH_SHORT).show();
+
             }
         });
 
         _sad_face.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(FaceActivity.this,"Sad Face",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(FaceActivity.this,"Sad Face",Toast.LENGTH_SHORT).show();
+
             }
         });
 
         _angry_face.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(FaceActivity.this,"Angry Face",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(FaceActivity.this,"Angry Face",Toast.LENGTH_SHORT).show();
+
             }
         });
 
         _neutral_face.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(FaceActivity.this,"Neutral Face",Toast.LENGTH_SHORT).show();
+                //Toast.makeText(FaceActivity.this,"Neutral Face",Toast.LENGTH_SHORT).show();
+
             }
         });
     }

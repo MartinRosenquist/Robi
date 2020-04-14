@@ -55,35 +55,40 @@ public class MovementActivity extends MainActivity {
         _forward.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MovementActivity.this,"Forward", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MovementActivity.this,"Forward", Toast.LENGTH_SHORT).show();
+
             }
         });
 
         _stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MovementActivity.this,"Stop", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MovementActivity.this,"Stop", Toast.LENGTH_SHORT).show();
+
             }
         });
 
         _left.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MovementActivity.this,"Left", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MovementActivity.this,"Left", Toast.LENGTH_SHORT).show();
+
             }
         });
 
         _right.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MovementActivity.this,"Right", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MovementActivity.this,"Right", Toast.LENGTH_SHORT).show();
+
             }
         });
 
         _backwards.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MovementActivity.this,"Backwards", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MovementActivity.this,"Backwards", Toast.LENGTH_SHORT).show();
+
             }
         });
     }

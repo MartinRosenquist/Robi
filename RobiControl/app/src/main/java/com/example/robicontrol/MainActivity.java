@@ -2,24 +2,22 @@ package com.example.robicontrol;
 
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothManager;
-import android.app.ListActivity;
-
 import android.bluetooth.BluetoothSocket;
-import android.bluetooth.le.BluetoothLeScanner;
+import android.bluetooth.le.AdvertiseCallback;
+import android.bluetooth.le.AdvertiseData;
+import android.bluetooth.le.AdvertiseSettings;
+import android.bluetooth.le.BluetoothLeAdvertiser;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.ParcelUuid;
 import android.util.Log;
 import android.widget.Toast;
@@ -28,84 +26,85 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 
+//Gatt/Gap = Peripheral
 public class MainActivity extends AppCompatActivity {
-
-    private OutputStream outputStream;
-    private InputStream inStream;
-    public ArrayList<BluetoothDevice> _btDevices = new ArrayList<>();
-
-    private final BluetoothManager _bluetoothManager;
-
-    {
-        _bluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
-    }
-
-    private final BluetoothAdapter _bluetoothAdapter = _bluetoothManager.getAdapter();
+    public static final String TAG = MainActivity.class.getSimpleName();
+    Activity MainActivity = MainActivity.this;
+    private BluetoothAdapter _adapter = BluetoothAdapter.getDefaultAdapter();
+    private Set<BluetoothDevice> _bondedDevices = _adapter.getBondedDevices();
+    private BluetoothSocket _socket;
+    private BluetoothDevice _device;
+    private UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805f9b34fb");
+    private ArrayList<BluetoothDevice> _ArrayDevice = new ArrayList<>();
 
 
-    public Boolean onOff = false;
-    private BroadcastReceiver _broadcastreceiver = new BroadcastReceiver() {
+
+
+    private BroadcastReceiver _btReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if (action.equals(BluetoothDevice.ACTION_FOUND)){
-                BluetoothDevice _device = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
-                if (_device.getName().contains("ZBC-PAA")) {
-                    _btDevices.add(_device);
-                    Toast.makeText(MainActivity.this, _device.getName(), Toast.LENGTH_SHORT).show();
-                }
+            String _action = intent.getAction();
 
+            if (_action.equals(_adapter.ACTION_STATE_CHANGED)){
+                final int _state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE, _adapter.ERROR);
+
+                switch (_state){
+                    case BluetoothAdapter.STATE_ON:
+                        PrintText(MainActivity,"Bluetooth is On", 0);
+                        break; 
+                    case BluetoothAdapter.STATE_OFF:
+                        PrintText(MainActivity,"Bluetooth is Off", 0);
+                        break;
+                    case BluetoothAdapter.STATE_TURNING_OFF:
+                        PrintText(MainActivity,"Bluetooth is Turning Off", 0);
+                        break;
+                    case BluetoothAdapter.STATE_TURNING_ON:
+                        PrintText(MainActivity,"Bluetooth is Turning On", 0);
+                        break;
+                }
             }
         }
     };
+
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
-
-
-
-
-        if ((_bluetoothAdapter == null) || !_bluetoothAdapter.isEnabled()) {
+        if (!_adapter.isEnabled()){
             Intent _enableBT = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
             startActivity(_enableBT);
 
+            IntentFilter _filter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
+            registerReceiver(_btReceiver, _filter);
+        }
+        else {
+            _device = GetBondedDevice("poke");
         }
 
-        if (!_bluetoothAdapter.isDiscovering()) {
 
-            checkBTPermission();
 
-            _bluetoothAdapter.startDiscovery();
-
-            IntentFilter _Discoverdevices = new IntentFilter(BluetoothDevice.ACTION_FOUND);
-            registerReceiver(_broadcastreceiver, _Discoverdevices);
-        } else {
-            _bluetoothAdapter.cancelDiscovery();
-
-            _bluetoothAdapter.startDiscovery();
-
-            IntentFilter _Discoverdevices = new IntentFilter(BluetoothDevice.ACTION_FOUND);
-
-            checkBTPermission();
-
-            registerReceiver(_broadcastreceiver, _Discoverdevices);
-        }
+      PrintText(MainActivity, "Device Name: " + _device.getName() + "r\nDevice Address: " + _device.getAddress(), 1);
 
     }
 
+    // on app closing
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        unregisterReceiver(_broadcastreceiver);
+        unregisterReceiver(_btReceiver);
     }
 
+
+    //Checking if you are using an outdated Android Version, otherwise ask for Location permissions
     @SuppressLint("ObsoleteSdkInt")
     private void checkBTPermission() {
         if(Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP){
@@ -117,23 +116,26 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void PrintText(Activity _activity, String _text, int _duration){
+        Toast.makeText(_activity, _text, _duration).show();
+    }
+
+    /*
+        Get the specific bonded device
+    */
+    private BluetoothDevice GetBondedDevice(String _name){
+        BluetoothDevice _result = null;
+        if (_bondedDevices != null){
+            for (BluetoothDevice _device : _bondedDevices){
+                if (_device.getName().contains(_name)){
+                    _result = _device;
+                }
+            }
+        }
+
+
+        return _result;
+    }
+
 
 }
-/*
-    Set<BluetoothDevice> bondedDevices = _bluetoothAdapter.getBondedDevices();
-
-                if (bondedDevices.size() > 0) {
-
-                        for (BluetoothDevice _device : bondedDevices) {
-                        if (_device.getName() == "ZBC-PAALION0005") {
-                        Toast.makeText(MainActivity.this, _device.getName(), Toast.LENGTH_LONG).show();
-                        }
-
-                        }
-
-                        }
-
-                        Log.e("error", "No appropriate paired devices.");
-                        } else {
-                        Log.e("error", "Bluetooth is disabled.");
-                        }*/
