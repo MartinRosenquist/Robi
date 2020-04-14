@@ -9,10 +9,10 @@ namespace RaspberryPi
 {
     public class BluetoothController
     {
-        private StreamSocket socket;
-        private DataWriter writer;
-        private RfcommServiceProvider serviceProvider;
-        private StreamSocketListener socketListener;
+        private StreamSocket streamSocket;
+        private DataWriter dataWriter;
+        private RfcommServiceProvider rfcommServiceProvider;
+        private StreamSocketListener streamSocketListener;
 
         /// <summary>
         /// Initializes the server using RfcommServiceProvider to advertise the Chat Service UUID and start listening
@@ -22,7 +22,7 @@ namespace RaspberryPi
         {
             try
             {
-                serviceProvider = await RfcommServiceProvider.CreateAsync(RfcommServiceId.FromUuid(Constants.RfcommChatServiceUuid));
+                rfcommServiceProvider = await RfcommServiceProvider.CreateAsync(RfcommServiceId.FromUuid(Constants.RfcommChatServiceUuid));
             }
             // Catch exception HRESULT_FROM_WIN32(ERROR_DEVICE_NOT_AVAILABLE)
             catch (Exception ex) when ((uint)ex.HResult == 0x800710DF)
@@ -32,24 +32,32 @@ namespace RaspberryPi
             }
 
             // Create a listener for this service and start listening 
-            socketListener = new StreamSocketListener();
-            socketListener.ConnectionReceived += SocketListener_ConnectionReceived;
-            string rfcomm = serviceProvider.ServiceId.AsString();
-
-            await socketListener.BindServiceNameAsync(rfcomm, SocketProtectionLevel.BluetoothEncryptionAllowNullAuthentication);
-
-            // Set the SDP attributes and start Bluetooth advertising
-            InitializeServiceSdpAttributes(serviceProvider);
+            streamSocketListener = new StreamSocketListener();
+            streamSocketListener.ConnectionReceived += SocketListener_ConnectionReceived;
+            string rfcomm = rfcommServiceProvider.ServiceId.AsString();
 
             try
             {
-                serviceProvider.StartAdvertising(socketListener, true);
+                await streamSocketListener.BindServiceNameAsync(rfcomm, SocketProtectionLevel.BluetoothEncryptionAllowNullAuthentication);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error: {ex.Message}");
+                return;
+            }
+
+            // Set the SDP attributes and start Bluetooth advertising
+            InitializeServiceSdpAttributes(rfcommServiceProvider);
+
+            try
+            {
+                rfcommServiceProvider.StartAdvertising(streamSocketListener, true);
             }
             catch (Exception ex)
             {
                 // If you aren't able to get a reference to an RfcommServiceProvider, tell the user why.
                 // Usually throws an exception if user changed their privacy settings to prevent Sync w/ Devices.
-                Debug.WriteLine(ex.Message);
+                Debug.WriteLine($"Error: {ex.Message}");
                 return;
             }
 
@@ -84,12 +92,12 @@ namespace RaspberryPi
             if (message.Length != 0)
             {
                 // Make sure that the connection is still up and there is a message to send
-                if (socket != null)
+                if (streamSocket != null)
                 {
-                    writer.WriteUInt32((uint)message.Length);
-                    writer.WriteString(message);
+                    dataWriter.WriteUInt32((uint)message.Length);
+                    dataWriter.WriteString(message);
 
-                    await writer.StoreAsync();
+                    await dataWriter.StoreAsync();
                 }
                 else
                 {
@@ -100,40 +108,40 @@ namespace RaspberryPi
 
         private void Disconnect()
         {
-            if (serviceProvider != null)
+            if (rfcommServiceProvider != null)
             {
-                serviceProvider.StopAdvertising();
-                serviceProvider = null;
+                rfcommServiceProvider.StopAdvertising();
+                rfcommServiceProvider = null;
             }
 
-            if (socketListener != null)
+            if (streamSocketListener != null)
             {
-                socketListener.Dispose();
-                socketListener = null;
+                streamSocketListener.Dispose();
+                streamSocketListener = null;
             }
 
-            if (writer != null)
+            if (dataWriter != null)
             {
-                writer.DetachStream();
-                writer = null;
+                dataWriter.DetachStream();
+                dataWriter = null;
             }
 
-            if (socket != null)
+            if (streamSocket != null)
             {
-                socket.Dispose();
-                socket = null;
+                streamSocket.Dispose();
+                streamSocket = null;
             }
         }
 
         private async void SocketListener_ConnectionReceived(StreamSocketListener sender, StreamSocketListenerConnectionReceivedEventArgs args)
         {
             // Don't need the listener anymore
-            socketListener.Dispose();
-            socketListener = null;
+            streamSocketListener.Dispose();
+            streamSocketListener = null;
 
             try
             {
-                socket = args.Socket;
+                streamSocket = args.Socket;
             }
             catch (Exception ex)
             {
@@ -143,10 +151,10 @@ namespace RaspberryPi
             }
 
             // Note - this is the supported way to get a Bluetooth device from a given socket
-            BluetoothDevice remoteDevice = await BluetoothDevice.FromHostNameAsync(socket.Information.RemoteHostName);
+            BluetoothDevice remoteDevice = await BluetoothDevice.FromHostNameAsync(streamSocket.Information.RemoteHostName);
 
-            writer = new DataWriter(socket.OutputStream);
-            DataReader reader = new DataReader(socket.InputStream);
+            dataWriter = new DataWriter(streamSocket.OutputStream);
+            DataReader reader = new DataReader(streamSocket.InputStream);
             bool remoteDisconnection = false;
 
             Debug.WriteLine($"Connected to client: {remoteDevice.Name}");
