@@ -19,7 +19,7 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>C:\Users\mrqui\Documents\Repos\Robi\Robi\RaspberryPi\bin\x64\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>1C41232A7BF2B405976280CEA80C2157063AD914E73CB248542C46250901E24D</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>C50B3543951FEFDD93858234EB00B32804E8FEE02FF5ACBD3FC7F7F6B4B6E1C2</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>b53a6015-e0f1-404b-bad2-a6804167a1a7_1.0.0.0_x64__7z7qd0d2bvj2t</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>b53a6015-e0f1-404b-bad2-a6804167a1a7_7z7qd0d2bvj2t!App</RegisteredUserModeAppID>
     <RegisteredPackageID>b53a6015-e0f1-404b-bad2-a6804167a1a7</RegisteredPackageID>
@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\mrqui\Documents\Repos\Robi\Robi\RaspberryPi\bin\x64\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2020-03-25T14:48:26.232</Modified>
+      <Modified>2020-03-30T10:02:57.224</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\mrqui\Documents\Repos\Robi\Robi\RaspberryPi\bin\x64\Debug\RaspberryPi.exe">
       <PackagePath>entrypoint\RaspberryPi.exe</PackagePath>
-      <Modified>2020-03-25T14:48:25.764</Modified>
+      <Modified>2020-03-30T10:02:56.760</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\UWPNuGetPackages\runtime.win10-x64.microsoft.netcore.universalwindowsplatform\6.2.9\runtimes\win10-x64\lib\uap10.0.15138\System.Runtime.dll">
       <PackagePath>System.Runtime.dll</PackagePath>
@@ -90,11 +90,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mrqui\Documents\Repos\Robi\Robi\RaspberryPi\bin\x64\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2020-03-25T14:23:45.446</Modified>
+      <Modified>2020-03-27T12:53:45.298</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mrqui\Documents\Repos\Robi\Robi\RaspberryPi\bin\x64\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2020-03-25T14:23:45.447</Modified>
+      <Modified>2020-03-27T12:53:45.299</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.18362.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -102,11 +102,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mrqui\Documents\Repos\Robi\Robi\RaspberryPi\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2020-03-25T12:02:54.761</Modified>
+      <Modified>2020-03-27T13:09:01.639</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\mrqui\Documents\Repos\Robi\Robi\RaspberryPi\bin\x64\Debug\Core\RaspberryPi.exe">
       <PackagePath>RaspberryPi.exe</PackagePath>
-      <Modified>2020-03-25T14:48:26.226</Modified>
+      <Modified>2020-03-30T10:02:57.219</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
